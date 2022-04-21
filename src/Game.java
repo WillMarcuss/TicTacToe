@@ -10,6 +10,7 @@ public class Game extends Application {
     public void start(Stage stage) {
         Pane pane = new Pane();
         View view = new View();
+        pane.setStyle("-fx-base: rgb(140,212,122);");
         pane.getChildren().add(view);
 
 
