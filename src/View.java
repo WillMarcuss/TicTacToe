@@ -1,4 +1,5 @@
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -10,6 +11,8 @@ public class View extends Pane {
     private Rectangle firstHorizontal;
     private Rectangle secondHorizontal;
     private Rectangle winningLine;
+    private Label xWinsText;
+    private Label yWinsText;
     private boolean xTurn;
     private Button reset;
     public Button[][] spaces;
@@ -20,10 +23,17 @@ public class View extends Pane {
         secondVertical = new Rectangle(310,50,10,400);
         firstHorizontal = new Rectangle(50,180,400,10);
         secondHorizontal = new Rectangle(50,310,400,10);
+
+        xWinsText = new Label("0");
+        xWinsText.relocate(20,50);
+
+        yWinsText = new Label("0");
+        yWinsText.relocate(40,50);
+
         reset = new Button("Reset");
         reset.relocate(10,10);
         reset.setPrefSize(50,25);
-        getChildren().addAll(firstVertical,secondVertical,firstHorizontal,secondHorizontal,reset);
+        getChildren().addAll(firstVertical,secondVertical,firstHorizontal,secondHorizontal,reset,xWinsText,yWinsText);
 
         spaces = new Button[3][3];
         int yIncrement = 150;
@@ -133,7 +143,7 @@ public class View extends Pane {
         return reset;
     }
 
-    public void disableButtons(){
+    public void disableButtons() {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 spaces[row][col].setDisable(true);
@@ -141,6 +151,14 @@ public class View extends Pane {
         }
     }
 
+    public void addWin(String winner){
+        if(winner == "X"){
+            xWinsText.setText(""+(Integer.parseInt(xWinsText.getText())+1));
+        }
+        else{
+            yWinsText.setText(""+(Integer.parseInt(yWinsText.getText())+1));
+        }
+    }
 
 
 }

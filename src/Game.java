@@ -23,6 +23,7 @@ public class Game extends Application {
                         String s = view.whoTurn();
                             view.spaces[finalRow][finalCol].setText(s);
                             if(view.checkWin(s)){
+                                view.addWin(s);
                                 System.out.println(s+" won");
                                 view.disableButtons();
                             }
